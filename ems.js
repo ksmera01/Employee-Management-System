@@ -90,12 +90,7 @@ function viewEmployees() {
     query += "FROM employee LEFT JOIN role ON employee.role_id = role.id ";
     query += "LEFT JOIN department ON role.department_id = department.id";
     connection.query(query, function (err, res) {
-        for (let i = 0; i < res.length; i++) {
-            const values = [
-                [res[i].id, res[i].first_name, res[i].last_name],
-            ];
-            console.table(['id', 'first_name', 'last_name', 'title', 'department', 'salary', 'manager'], values);
-        }
+        { console.table(res) };
         promptUser();
     });
 }
