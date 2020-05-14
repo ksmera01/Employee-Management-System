@@ -33,39 +33,70 @@ function promptUser() {
                 "View All Employees By Manager",
                 "Add Employee",
                 "Remove Employee",
+                "Remove Role",
+                "Remove Department",
                 "Update Employee Role",
-                "Update Employee Manager"
+                "Update Employee Manager",
+                "View Total Utilized Budget by Department"
             ]
         })
         .then(function (answer) {
             switch (answer.action) {
                 case "View All Employees":
-                    // viewEmployees();
+                    viewEmployees();
                     break;
 
                 case "View All Employees By Department":
-                    // viewEmployeesByDep();
+                    viewEmployeesByDep();
                     break;
 
                 case "View All Employees By Manager":
-                    // viewEmployeesByManager();
+                    viewEmployeesByManager();
                     break;
 
                 case "Add Employee":
-                    // addEmployee();
+                    addEmployee();
                     break;
 
                 case "Remove Employee":
-                    // removeEmployee();
+                    removeEmployee();
+                    break;
+
+                case "Remove Role":
+                    removeRole();
+                    break;
+
+                case "Remove Department":
+                    removeDepartment();
                     break;
 
                 case "Update Employee Role":
-                    // updateEmployeeRole();
+                    updateEmployeeRole();
                     break;
 
                 case "Update Employee Manager":
-                    // updateEmployeeManager();
+                    updateEmployeeManager();
+                    break;
+
+                case "View Total Utilized Budget by Department":
+                    viewBudget();
                     break;
             }
         });
 }
+
+function viewEmployees() {
+    var query = "SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department ";
+    query += "FROM employee LEFT JOIN role ON employee.role_id = role.id ";
+    query += "LEFT JOIN department ON role.department_id = department.id";
+    connection.query(query, function (err, res) {
+        for (let i = 0; i < res.length; i++) {
+            const values = [
+                [res[i].id, res[i].first_name, res[i].last_name],
+            ];
+            console.table(['id', 'first_name', 'last_name', 'title', 'department', 'salary', 'manager'], values);
+        }
+        promptUser();
+    });
+}
+
