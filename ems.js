@@ -37,7 +37,8 @@ function promptUser() {
                 "Remove Department",
                 "Update Employee Role",
                 "Update Employee Manager",
-                "View Total Utilized Budget by Department"
+                "View Total Utilized Budget by Department",
+                "Exit"
             ]
         })
         .then(function (answer) {
@@ -81,6 +82,10 @@ function promptUser() {
                 case "View Total Utilized Budget by Department":
                     viewBudget();
                     break;
+
+                case "View Total Utilized Budget by Department":
+                    end();
+                    break;
             }
         });
 }
@@ -90,6 +95,16 @@ function viewEmployees() {
     query += "FROM employee LEFT JOIN role ON employee.role_id = role.id ";
     query += "LEFT JOIN department ON role.department_id = department.id";
     connection.query(query, function (err, res) {
+        if (err) throw err;
+        { console.table(res) };
+        promptUser();
+    });
+}
+
+function viewEmployeesByDep() {
+    var query = "SELECT department.name FROM employee GROUP BY department.name";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
         { console.table(res) };
         promptUser();
     });
