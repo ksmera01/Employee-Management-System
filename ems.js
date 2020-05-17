@@ -33,6 +33,8 @@ function promptUser() {
                 "View All Employees By Department",
                 "View All Employees By Manager",
                 "Add Employee",
+                "Add Role",
+                "Add Department",
                 "Remove Employee",
                 "Remove Role",
                 "Remove Department",
@@ -60,6 +62,14 @@ function promptUser() {
                     addEmployee();
                     break;
 
+                case "Add Role":
+                    addRole();
+                    break;
+
+                case "Add Department":
+                    addDepartment();
+                    break;
+
                 case "Remove Employee":
                     removeEmployee();
                     break;
@@ -84,8 +94,8 @@ function promptUser() {
                     viewBudget();
                     break;
 
-                case "View Total Utilized Budget by Department":
-                    end();
+                case "Exit":
+                    connection.end();
                     break;
             }
         });
@@ -185,5 +195,299 @@ function viewEmployeesByDep() {
         })
 }
 
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "firstName",
+                message: "What is the employee's first name?",
+            },
+            {
+                type: "input",
+                name: "lastName",
+                message: "What is the employee's last name?",
+            },
+            {
+                type: "list",
+                name: "employeeRole",
+                message: "What is the employee's role?",
+                choices: ["Software Engineer", "Claims Lawyer", "Sales Manager", "Marketing Lead", "Human Resources Director", "Accountant", "Support Desk Manager", "Data Engineer", "Account Manager"]
+            }
+        ])
+        .then(function (answer) {
+            if (answer.employeeRole === "Software Engineer")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 1
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Claims Lawyer")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 2
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Sales Manager")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 3
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Marketing Lead")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 4
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Human Resources Director")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 5
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Accountant")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 6
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Support Desk Manager")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 7
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Data Engineer")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 8
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRole === "Account Manager")
+                connection.query(
+                    "INSERT INTO employee SET ?",
+                    {
+                        first_name: answer.firstName,
+                        last_name: answer.lastName,
+                        role_id: 9
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your employee was created successfully!");
+                        promptUser();
+                    }
+                );
+        });
 
+}
 
+function addRole() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "roleTitle",
+                message: "Please enter the new role title.",
+            },
+            {
+                type: "input",
+                name: "roleSalary",
+                message: "What is the new role salary?",
+            },
+            {
+                type: "list",
+                name: "roleDepartment",
+                message: "Please eneter the department for the new role.",
+                choices: ["Engineering", "Legal", "Sales", "Marketing", "Human Resources", "Finance", "Information Technology"]
+            }
+        ])
+        .then(function (answer) {
+            if (answer.roleDepartment === "Engineering")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 1
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.roleDepartment === "Legal")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 2
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.roleDepartment === "Sales")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 3
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.roleDepartment === "Marketing")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 4
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.roleDepartment === "Human Resources")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 5
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.roleDepartment === "Finance")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 6
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.roleDepartment === "Information Technology")
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: answer.roleTitle,
+                        salary: answer.roleSalary,
+                        department_id: 7
+                    },
+                    function (err) {
+                        if (err) throw err;
+                        console.log("Your role was created successfully!");
+                        promptUser();
+                    }
+                );
+        });
+}
+
+function addDepartment() {
+    inquirer
+        .prompt(
+            {
+                type: "input",
+                name: "newDepartmentName",
+                message: "Please enter the name of the new department",
+            },
+        )
+        .then(function (answer) {
+            connection.query(
+                "INSERT INTO department SET ?",
+                {
+                    name: answer.newDepartmentName,
+                },
+                function (err) {
+                    if (err) throw err;
+                    console.log("Your new department was created successfully!");
+                    promptUser();
+                }
+            );
+        });
+}
