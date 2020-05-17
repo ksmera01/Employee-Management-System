@@ -32,6 +32,8 @@ function promptUser() {
                 "View All Employees",
                 "View All Employees By Department",
                 "View All Employees By Manager",
+                "View Departments",
+                "View Roles",
                 "Add Employee",
                 "Add Role",
                 "Add Department",
@@ -56,6 +58,14 @@ function promptUser() {
 
                 case "View All Employees By Manager":
                     viewEmployeesByManager();
+                    break;
+
+                case "View Departments":
+                    viewDepartments();
+                    break;
+
+                case "View Roles":
+                    viewRoles();
                     break;
 
                 case "Add Employee":
@@ -193,6 +203,24 @@ function viewEmployeesByDep() {
                 });
             }
         })
+}
+
+function viewDepartments() {
+    var query = "SELECT * FROM department";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        { console.table(res) };
+        promptUser();
+    });
+}
+
+function viewRoles() {
+    var query = "SELECT * FROM role";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        { console.table(res) };
+        promptUser();
+    });
 }
 
 function addEmployee() {
