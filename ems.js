@@ -502,7 +502,7 @@ function addDepartment() {
             {
                 type: "input",
                 name: "newDepartmentName",
-                message: "Please enter the name of the new department",
+                message: "Please enter the name of the new department.",
             },
         )
         .then(function (answer) {
@@ -514,6 +514,74 @@ function addDepartment() {
                 function (err) {
                     if (err) throw err;
                     console.log("Your new department was created successfully!");
+                    promptUser();
+                }
+            );
+        });
+}
+
+function removeEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "firstNameDeleteEmployee",
+                message: "What is the employee's first name?",
+            },
+            {
+                type: "input",
+                name: "lastNameDeleteEmployee",
+                message: "What is the employee's last name?",
+            },
+        ])
+        .then(function (answer) {
+            connection.query(
+                "DELETE FROM employee WHERE first_name = ? and last_name = ?", [answer.firstNameDeleteEmployee, answer.lastNameDeleteEmployee],
+                function (err) {
+                    if (err) throw err;
+                    console.log("The employee was deleted successfully!");
+                    promptUser();
+                }
+            );
+        });
+}
+
+function removeRole() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "removeRole",
+                message: "Which role would you like to remove?",
+            },
+        ])
+        .then(function (answer) {
+            connection.query(
+                "DELETE FROM role WHERE title = ?", [answer.removeRole],
+                function (err) {
+                    if (err) throw err;
+                    console.log("The role was deleted successfully!");
+                    promptUser();
+                }
+            );
+        });
+}
+
+function removeDepartment() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "removeDepartment",
+                message: "Which department would you like to remove?",
+            },
+        ])
+        .then(function (answer) {
+            connection.query(
+                "DELETE FROM department WHERE name = ?", [answer.removeDepartment],
+                function (err) {
+                    if (err) throw err;
+                    console.log("The department was deleted successfully!");
                     promptUser();
                 }
             );
