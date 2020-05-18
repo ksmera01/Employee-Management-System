@@ -550,5 +550,77 @@ function updateEmployeeRole() {
                         promptUser();
                     }
                 );
+            else if (answer.employeeRoleUpdate === "Claims Lawyer")
+                connection.query(
+                    "UPDATE employee SET role_id = 2 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Sales Manager")
+                connection.query(
+                    "UPDATE employee SET role_id = 3 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Marketing Lead")
+                connection.query(
+                    "UPDATE employee SET role_id = 4 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Human Resources Director")
+                connection.query(
+                    "UPDATE employee SET role_id = 5 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Accountant")
+                connection.query(
+                    "UPDATE employee SET role_id = 6 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Support Desk Manager")
+                connection.query(
+                    "UPDATE employee SET role_id = 7 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Data Engineer")
+                connection.query(
+                    "UPDATE employee SET role_id = 8 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
+            else if (answer.employeeRoleUpdate === "Account Manager")
+                connection.query(
+                    "UPDATE employee SET role_id = 9 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
         });
 }
