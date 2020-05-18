@@ -390,7 +390,7 @@ function addRole() {
             {
                 type: "list",
                 name: "roleDepartment",
-                message: "Please eneter the department for the new role.",
+                message: "Please enter the department for the new role.",
                 choices: ["Engineering", "Legal", "Sales", "Marketing", "Human Resources", "Finance", "Information Technology"]
             }
         ])
@@ -517,5 +517,38 @@ function addDepartment() {
                     promptUser();
                 }
             );
+        });
+}
+
+function updateEmployeeRole() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "firstNameUpdateRole",
+                message: "What is the employee's first name?",
+            },
+            {
+                type: "input",
+                name: "lastNameUpdateRole",
+                message: "What is the employee's last name?",
+            },
+            {
+                type: "list",
+                name: "employeeRoleUpdate",
+                message: "What is the employee's new role?",
+                choices: ["Software Engineer", "Claims Lawyer", "Sales Manager", "Marketing Lead", "Human Resources Director", "Accountant", "Support Desk Manager", "Data Engineer", "Account Manager"]
+            }
+        ])
+        .then(function (answer) {
+            if (answer.employeeRoleUpdate === "Software Engineer")
+                connection.query(
+                    "UPDATE employee SET role_id = 1 WHERE first_name = ? and last_name = ?", [answer.firstNameUpdateRole, answer.lastNameUpdateRole],
+                    function (err) {
+                        if (err) throw err;
+                        console.log("The employee was updated successfully!");
+                        promptUser();
+                    }
+                );
         });
 }
