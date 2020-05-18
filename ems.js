@@ -31,7 +31,6 @@ function promptUser() {
             choices: [
                 "View All Employees",
                 "View All Employees By Department",
-                "View All Employees By Manager",
                 "View Departments",
                 "View Roles",
                 "Add Employee",
@@ -41,8 +40,6 @@ function promptUser() {
                 "Remove Role",
                 "Remove Department",
                 "Update Employee Role",
-                "Update Employee Manager",
-                "View Total Utilized Budget by Department",
                 "Exit"
             ]
         })
@@ -54,10 +51,6 @@ function promptUser() {
 
                 case "View All Employees By Department":
                     viewEmployeesByDep();
-                    break;
-
-                case "View All Employees By Manager":
-                    viewEmployeesByManager();
                     break;
 
                 case "View Departments":
@@ -96,14 +89,6 @@ function promptUser() {
                     updateEmployeeRole();
                     break;
 
-                case "Update Employee Manager":
-                    updateEmployeeManager();
-                    break;
-
-                case "View Total Utilized Budget by Department":
-                    viewBudget();
-                    break;
-
                 case "Exit":
                     connection.end();
                     break;
@@ -128,7 +113,7 @@ function viewEmployeesByDep() {
             {
                 type: "list",
                 name: "depChoice",
-                message: "Please select department",
+                message: "Please select department.",
                 choices: ["Engineering", "Legal", "Sales", "Marketing", "Human Resources", "Finance", "Information Technology"]
             }
         ).then(function (answer) {
